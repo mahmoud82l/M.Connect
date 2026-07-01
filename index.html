@@ -486,8 +486,9 @@
             submitBtn.textContent = "جاري الإرسال...";
             submitBtn.disabled = true;
 
+            // التوكن والـ ID بتوع تليجرام 
             const botToken = '8920411199:AAFx2LwVMdKpJJ8_HgUhYr5DcwZeHLnJh9I';
-            const chatId = 'حط_الـ_ID_بتاعك_هنا'; // ⚠️ غير الكلمة دي وحط الـ ID بتاعك لما تجيبه ⚠️
+            const chatId = '8269206583'; 
 
             const captionText = `
 🔔 طلب شحن جديد (M.Connect)
@@ -513,7 +514,7 @@
                     paymentSection.classList.add('hidden');
                     successSection.classList.remove('hidden');
                 } else {
-                    alert("الطلب اتسجل، بس حط الـ ID بتاع تليجرام في الكود عشان الصورة توصلك!");
+                    alert("الطلب اتسجل، بس تأكد إن صاحبك داس Start جوة البوت على تليجرام عشان الصورة توصل له!");
                     paymentSection.classList.add('hidden');
                     successSection.classList.remove('hidden');
                 }
