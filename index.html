@@ -125,6 +125,7 @@
             color: var(--primary-color);
             border: 2px solid var(--primary-color);
             margin-top: 1rem;
+            cursor: pointer;
         }
 
         .btn-outline:hover {
@@ -189,29 +190,55 @@
             gap: 5px;
         }
 
+        /* تنسيق شريط المعلومات الجديد */
         .info-banner {
-            background-color: var(--secondary-color);
-            border: 2px solid #bee3f8;
-            border-radius: 8px;
+            background: linear-gradient(135deg, #f3e8ff 0%, #ebf8ff 100%);
+            border: 2px solid #d6bcfa;
+            border-radius: 12px;
             padding: 1.5rem;
-            margin-bottom: 2rem;
-            text-align: right;
-            color: var(--text-dark);
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow);
         }
 
         .info-banner h3 {
             color: var(--we-color);
             text-align: center;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             font-weight: 800;
         }
 
-        .info-banner ul {
-            list-style: none;
-            padding: 0;
-            line-height: 2;
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .info-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            font-weight: 800;
+        }
+
+        .info-card p {
+            font-size: 0.85rem;
+            color: var(--text-dark);
             font-weight: 600;
-            font-size: 0.95rem;
+            line-height: 1.5;
         }
 
         .hidden {
@@ -302,28 +329,45 @@
         <!-- قسم الإدارة المخفي -->
         <div id="admin-section" class="card hidden">
             <h2 style="color: #e53e3e;">لوحة تحكم الإدارة (M.Connect)</h2>
-            <p style="text-align: center; margin-bottom: 1.5rem; color: var(--text-light);">تقدر تعدل تفاصيل وأسعار الباقات من هنا وهتتحدث عند كل العملاء فوراً.</p>
+            <p style="text-align: center; margin-bottom: 1.5rem; color: var(--text-light);">تقدر تعدل تفاصيل وأسعار الباقات، أو تضيف وتحذف باقات من هنا.</p>
             
             <div id="admin-packages-container" style="display: flex; flex-direction: column; gap: 1rem;">
                 <!-- الباقات هتظهر هنا للأدمن -->
             </div>
             
-            <button class="btn btn-danger" id="btn-save-packages">حفظ التعديلات</button>
-            <button class="btn btn-outline" onclick="location.reload()">تسجيل خروج</button>
+            <button class="btn btn-outline" style="border-color: #38a169; color: #38a169; margin-top: 1rem; border-width: 2px;" onclick="addNewPackage()">➕ إضافة باقة جديدة</button>
+            <button class="btn btn-danger" id="btn-save-packages">💾 حفظ التعديلات</button>
+            <button class="btn btn-outline" style="margin-top: 10px;" onclick="location.reload()">تسجيل خروج</button>
         </div>
 
         <!-- قسم الباقات للعميل -->
         <div id="packages-section" class="hidden">
             
-            <!-- البانر الجديد لمعلومات الحجز -->
+            <!-- البانر الجديد لمعلومات الحجز (تصميم الكروت) -->
             <div class="info-banner">
-                <h3>💜 باقات شبكة WE (015) 💜</h3>
-                <ul>
-                    <li>📅 <strong>مواعيد التفعيل:</strong> التفعيل بيتم يوم 1 ويوم 16 من كل شهر.</li>
-                    <li>⏳ <strong>أخر موعد للحجز:</strong> قبل يوم التفعيل بيوم واحد كحد أقصى.</li>
-                    <li>🕛 <strong>وقت التفعيل:</strong> خلال اليوم حتى فترة الظهر.</li>
-                    <li>⚡ <strong>المميزات:</strong> الميجا بميجا لأي موقع، والدقيقة بدقيقة لأي شبكة، وسرعة وثبات طول الشهر.</li>
-                </ul>
+                <h3>💜 تفاصيل وشروط الحجز (باقات WE 015) 💜</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon">📅</div>
+                        <h4>مواعيد التفعيل</h4>
+                        <p>التفعيل بيتم يوم 1 ويوم 16 من كل شهر.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">⏳</div>
+                        <h4>أخر موعد للحجز</h4>
+                        <p>قبل يوم التفعيل بيوم واحد كحد أقصى.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">🕛</div>
+                        <h4>وقت التفعيل</h4>
+                        <p>خلال اليوم حتى فترة الظهر.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">🚀</div>
+                        <h4>المميزات</h4>
+                        <p>الميجا بميجا لأي موقع، والدقيقة بدقيقة لأي شبكة.</p>
+                    </div>
+                </div>
             </div>
             
             <h2 style="text-align: right; color: var(--text-dark);">اختار الباقة المناسبة ليك</h2>
@@ -403,7 +447,7 @@
             console.error(e);
         }
 
-        // الداتا الأساسية في حالة الداتابيز لسه فاضية
+        // الداتا الأساسية
         const defaultPackages = [
             { id: 1, gb: 20, mins: 1500, price: 280 },
             { id: 2, gb: 30, mins: 1500, price: 330 },
@@ -443,7 +487,6 @@
             loginBtn.textContent = "جاري التحميل...";
             loginBtn.disabled = true;
 
-            // جلب الباقات من الداتابيز عشان نعرض أحدث أسعار
             if(db) {
                 try {
                     const pkgSnapshot = await get(child(ref(db), 'settings/packages'));
@@ -460,7 +503,7 @@
                 currentPackages = defaultPackages;
             }
 
-            // فحص دخول الأدمن (الإدارة)
+            // فحص دخول الأدمن
             if (name === 'M.Connect' && phone === '01031690232') {
                 loginSection.classList.add('hidden');
                 userGreeting.textContent = `أهلاً، مدير النظام`;
@@ -468,7 +511,7 @@
                 
                 renderAdminPackages();
                 adminSection.classList.remove('hidden');
-                return; // نوقف الكود هنا للأدمن
+                return;
             }
 
             // دخول العميل العادي
@@ -498,12 +541,45 @@
         });
 
         // ------------------ دوال لوحة التحكم (الأدمن) ------------------
+        
+        // دالة لمزامنة اللي مكتوب في الخانات قبل أي عملية (إضافة أو حذف) عشان الداتا مضعش
+        window.syncAdminInputs = function() {
+            currentPackages.forEach((pkg, index) => {
+                const gbInput = document.getElementById(`edit-gb-${index}`);
+                const minsInput = document.getElementById(`edit-mins-${index}`);
+                const priceInput = document.getElementById(`edit-price-${index}`);
+                if(gbInput && minsInput && priceInput) {
+                    pkg.gb = parseInt(gbInput.value) || 0;
+                    pkg.mins = parseInt(minsInput.value) || 0;
+                    pkg.price = parseInt(priceInput.value) || 0;
+                }
+            });
+        };
+
+        // دالة حذف باقة
+        window.deletePackage = function(index) {
+            if(confirm('متأكد إنك عاوز تحذف الباقة دي؟')) {
+                window.syncAdminInputs(); 
+                currentPackages.splice(index, 1);
+                renderAdminPackages();
+            }
+        };
+
+        // دالة إضافة باقة جديدة
+        window.addNewPackage = function() {
+            window.syncAdminInputs();
+            const newId = currentPackages.length > 0 ? Math.max(...currentPackages.map(p => p.id)) + 1 : 1;
+            currentPackages.push({ id: newId, gb: 0, mins: 0, price: 0 });
+            renderAdminPackages();
+        };
+
         function renderAdminPackages() {
             adminPackagesContainer.innerHTML = '';
             currentPackages.forEach((pkg, index) => {
                 adminPackagesContainer.innerHTML += `
-                    <div style="background: #f7fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                        <h4 style="margin-bottom: 10px; color: var(--primary-color);">باقة رقم ${index + 1}</h4>
+                    <div style="background: #f7fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; position: relative;">
+                        <button onclick="deletePackage(${index})" style="position: absolute; top: 10px; left: 10px; background: #fc8181; color: white; border: none; border-radius: 6px; padding: 6px 12px; cursor: pointer; font-weight: bold; font-family: 'Cairo';">حذف 🗑️</button>
+                        <h4 style="margin-bottom: 15px; color: var(--primary-color);">باقة رقم ${index + 1}</h4>
                         <div style="display: flex; gap: 10px;">
                             <div style="flex: 1;">
                                 <label>الجيجات</label>
@@ -528,26 +604,18 @@
             btn.textContent = "جاري الحفظ...";
             btn.disabled = true;
 
-            const updatedPackages = currentPackages.map((pkg, index) => {
-                return {
-                    id: pkg.id,
-                    gb: parseInt(document.getElementById(`edit-gb-${index}`).value),
-                    mins: parseInt(document.getElementById(`edit-mins-${index}`).value),
-                    price: parseInt(document.getElementById(`edit-price-${index}`).value)
-                };
-            });
+            window.syncAdminInputs(); // نسحب آخر أرقام اتكتبت
 
             if(db) {
                 try {
-                    await set(ref(db, 'settings/packages'), updatedPackages);
-                    alert("تم حفظ الأسعار والباقات بنجاح! هتسمع عند كل العملاء دلوقتي.");
-                    currentPackages = updatedPackages;
+                    await set(ref(db, 'settings/packages'), currentPackages);
+                    alert("تم حفظ التعديلات بنجاح! الباقات اتحدثت عند كل العملاء.");
                 } catch(error) {
                     alert("حصلت مشكلة في الحفظ، اتأكد من النت.");
                 }
             }
             
-            btn.textContent = "حفظ التعديلات";
+            btn.textContent = "💾 حفظ التعديلات";
             btn.disabled = false;
         });
 
