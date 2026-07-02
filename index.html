@@ -23,7 +23,13 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-dark); line-height: 1.6; }
+        
+        /* منع التحديد والنسخ كنوع من الحماية الإضافية */
+        body { 
+            background-color: var(--bg-color); color: var(--text-dark); line-height: 1.6;
+            -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; 
+        }
+        
         header { background-color: var(--white); padding: 1rem 2rem; box-shadow: var(--shadow); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
         .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary-color); letter-spacing: 1px; }
         .container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; padding-bottom: 80px; }
@@ -93,9 +99,26 @@
         .merchant-table th { background-color: #edf2f7; color: var(--primary-color); }
         .history-list { list-style: none; padding: 0; margin: 0; font-size: 0.8rem; color: #4a5568; }
         .history-list li { border-bottom: 1px solid #edf2f7; padding: 4px 0; }
+        
+        /* استثناء حقل الإدخال من منع التحديد عشان الناس تعرف تكتب */
+        input, select, textarea {
+            -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text; user-select: text;
+        }
     </style>
 </head>
 <body>
+
+    <script>
+        // كود الحماية (منع كليك يمين والاختصارات)
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123) { return false; } // منع F12
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; } // Ctrl+Shift+I
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; } // Ctrl+Shift+C
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; } // Ctrl+Shift+J
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; } // Ctrl+U
+        };
+    </script>
 
     <header>
         <div class="logo">M.Connect</div>
@@ -104,6 +127,7 @@
 
     <div class="container">
         
+        <!-- قسم تسجيل الدخول -->
         <div id="login-section" class="card">
             <h2>تسجيل الدخول</h2>
             <p style="text-align: center; color: var(--text-light); margin-bottom: 1rem;">سجل بياناتك عشان تتابع حجوزاتك بسهولة</p>
@@ -124,6 +148,7 @@
             </form>
         </div>
 
+        <!-- قسم اختيار الشركة المربع الـ 4 -->
         <div id="companies-section" class="card hidden">
             <h2>اختر شبكة الشحن</h2>
             <p style="text-align: center; color: var(--text-light); margin-bottom: 1.5rem;">اضغط على الشبكة لعرض الباقات المتاحة</p>
@@ -135,9 +160,11 @@
             </div>
         </div>
 
+        <!-- قسم الإدارة المخفي -->
         <div id="admin-section" class="card hidden">
             <h2 style="color: #e53e3e;">لوحة تحكم الإدارة (M.Connect)</h2>
             
+            <!-- إدارة أكواد التجار -->
             <div class="admin-block">
                 <h3 style="color: var(--we-color); margin-bottom: 1rem;">💼 إدارة أكواد التجار</h3>
                 <div class="form-group">
@@ -169,6 +196,7 @@
                 </div>
             </div>
 
+            <!-- إدارة الباقات لجميع الشركات -->
             <div class="admin-block">
                 <h3 style="color: var(--we-color); margin-bottom: 1rem;">📦 تعديل الباقات ونسب الخصم للشركات</h3>
                 <div id="admin-packages-container" style="display: flex; flex-direction: column; gap: 1rem;"></div>
@@ -179,8 +207,10 @@
             <button class="btn btn-outline" style="margin-top: 10px;" onclick="location.reload()">تسجيل خروج</button>
         </div>
 
+        <!-- قسم الباقات للعميل/التاجر -->
         <div id="packages-section" class="hidden">
             
+            <!-- بانر معلومات حجز WE المخصص لها فقط -->
             <div id="we-info-banner" class="info-banner hidden">
                 <h3>💜 تفاصيل وشروط الحجز (باقات WE 015) 💜</h3>
                 <div class="info-grid">
@@ -197,6 +227,7 @@
             <button class="btn btn-outline" style="margin-top: 2rem;" onclick="backToCompanies()">🔙 رجوع للشبكات</button>
         </div>
 
+        <!-- قسم تأكيد الطلب -->
         <div id="checkout-section" class="card hidden">
             <h2>تأكيد الطلب</h2>
             <div id="selected-package-summary" style="text-align: center; margin-bottom: 1.5rem; font-size: 1.2rem; font-weight: 600; color: var(--primary-color);"></div>
@@ -208,6 +239,7 @@
             <button class="btn btn-outline" id="btn-back-packages">رجوع للباقات</button>
         </div>
 
+        <!-- قسم الدفع والتحويل -->
         <div id="payment-section" class="card hidden">
             <h2>الدفع وتأكيد الحجز</h2>
             <p style="text-align: center; margin-bottom: 1rem;">برجاء تحويل مبلغ <span id="payment-amount" style="font-weight: 800; color: var(--primary-color); font-size: 1.4rem;"></span> جنيه على رقم الكاش التالي:</p>
@@ -222,6 +254,7 @@
             </form>
         </div>
 
+        <!-- شاشة النجاح -->
         <div id="success-section" class="card hidden">
             <div class="alert alert-success">تم إرسال طلبك بنجاح! جاري المراجعة والتفعيل.</div>
             <button class="btn" onclick="location.reload()">الرئيسية</button>
@@ -337,7 +370,6 @@
             selectedCompany = comp;
             document.getElementById('companies-section').classList.add('hidden');
             
-            // إظهار البانر الشروطي الخاص بـ WE فقط
             if(selectedCompany === 'WE') {
                 document.getElementById('we-info-banner').classList.remove('hidden');
             } else {
@@ -364,7 +396,6 @@
             const container = document.getElementById('packages-container');
             container.innerHTML = '';
             
-            // تصفية الباقات بناءً على الشركة المختارة
             const filtered = currentPackages.filter(p => p.company === selectedCompany);
 
             if(filtered.length === 0) {
@@ -376,10 +407,9 @@
                 let displayPriceHtml = '';
                 let packageFinalPrice = pkg.price;
 
-                // حساب الخصم المباشر بالجنيه وليس النسبة المئوية
                 if(currentUser.isMerchant && pkg.discount && pkg.discount > 0) {
                     packageFinalPrice = pkg.price - pkg.discount;
-                    if(packageFinalPrice < 0) packageFinalPrice = 0; // حماية برمجية
+                    if(packageFinalPrice < 0) packageFinalPrice = 0; 
                     displayPriceHtml = `<div class="package-price">${packageFinalPrice} <span>جنية</span> <span class="old-price">${pkg.price}</span></div>`;
                 } else {
                     displayPriceHtml = `<div class="package-price">${pkg.price} <span>جنية</span></div>`;
@@ -424,7 +454,7 @@
             document.getElementById('payment-amount').textContent = finalCalculatedPrice;
         });
 
-        // إرسال الطلب لتليجرام + حفظ التاريخ
+        // إرسال الطلب لتليجرام
         document.getElementById('payment-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const file = document.getElementById('receiptImage').files[0];
@@ -458,7 +488,7 @@
 🏢 الشبكة: ${selectedPackage.company}
 🎯 الرقم المراد شحنه: ${targetPhoneNumber}
 📦 الباقة: ${selectedPackage.gb} جيجا - ${selectedPackage.mins} دقيقة
-💰 المبلغ المطلوب (بعد خصم الجنيهات): ${finalCalculatedPrice} جنيه
+💰 المبلغ المطلوب: ${finalCalculatedPrice} جنيه
             `;
 
             const formData = new FormData();
