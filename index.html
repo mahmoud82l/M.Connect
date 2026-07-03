@@ -53,13 +53,13 @@
         .btn-danger { background-color: #e53e3e; margin-top: 1rem; }
         .btn-danger:hover { background-color: #c53030; }
         
-        /* تظبيط مربع الشركات الـ 4 عشان يبقى في النص وشكله متساوي */
+        /* مربع الشركات الـ 4 المتساوي والسينتر */
         .companies-grid { 
             display: grid; 
             grid-template-columns: repeat(2, 1fr); 
             gap: 15px; 
             margin: 1.5rem auto 0; 
-            max-width: 450px; /* بيخلي المربعات ملمومة وماتلزقش في أطراف الشاشة */
+            max-width: 450px; 
         }
         .company-box { 
             background: var(--white); 
@@ -68,7 +68,7 @@
             text-align: center; cursor: pointer; transition: all 0.3s ease; 
             font-weight: 800; font-size: 1.3rem; 
             display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
-            aspect-ratio: 1 / 1; /* بيخلي الكروت مربعة بالظبط زي أيقونات التطبيقات */
+            aspect-ratio: 1 / 1; 
         }
         .company-box:hover { transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
         .comp-we { border-color: #d6bcfa; color: var(--we-color); }
@@ -103,7 +103,6 @@
         .alert-warning { background-color: #feebc8; color: #c05621; border: 1px solid #fbd38d; }
         .admin-number { font-size: 1.8rem; font-weight: 800; color: #e53e3e; text-align: center; letter-spacing: 2px; margin: 1rem 0; padding: 1rem; background: #fff5f5; border-radius: 8px; }
         
-        /* تظبيط زرار الدعم الفني العائم */
         .floating-support { 
             position: fixed; bottom: 20px; left: 20px; 
             background-color: #25D366; color: white; border-radius: 50px; 
@@ -120,7 +119,6 @@
         .history-list { list-style: none; padding: 0; margin: 0; font-size: 0.8rem; color: #4a5568; }
         .history-list li { border-bottom: 1px solid #edf2f7; padding: 4px 0; }
         
-        /* تظبيط إمضاء المطور في الأسفل عشان يبان واضح */
         footer {
             text-align: center; 
             margin-top: 2rem; 
@@ -131,7 +129,7 @@
             font-weight: 600; 
             direction: ltr; 
             letter-spacing: 0.5px;
-            padding-bottom: 60px; /* مسافة من تحت عشان زرار الواتساب ميغطيش عليه */
+            padding-bottom: 60px; 
         }
 
         input, select, textarea {
@@ -191,7 +189,7 @@
         </div>
 
         <div id="admin-section" class="card hidden">
-            <h2 style="color: #e53e3e;">لوحة تحكم الإدارة (M.Connect)</h2>
+            <h2 style="color: #e53e3e;">لوحة تحكم الإدارة (MiGacom)</h2>
             <div class="admin-block">
                 <h3 style="color: var(--we-color); margin-bottom: 1rem;">💼 إدارة أكواد التجار</h3>
                 <div class="form-group">
@@ -345,7 +343,8 @@
                 }
             } else { currentPackages = defaultPackages; }
 
-            if (name === 'M.Connect' && phone === '01031690232') {
+            // هنا التعديل الجديد: تم تغيير اسم الأدمن لـ MiGacom
+            if (name === 'MiGacom' && phone === '01031690232') {
                 document.getElementById('login-section').classList.add('hidden');
                 document.getElementById('user-greeting').textContent = `أهلاً، مدير النظام`;
                 document.getElementById('user-greeting').classList.remove('hidden');
