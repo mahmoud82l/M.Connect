@@ -15,7 +15,7 @@
             --bg-color: #f7fafc;
             --white: #ffffff;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            --border-radius: 12px;
+            --border-radius: 16px;
             --we-color: #553c9a;
             --voda-color: #e53e3e;
             --eti-color: #38a169;
@@ -30,9 +30,12 @@
             -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; 
         }
         
-        header { background-color: var(--white); padding: 1rem 2rem; box-shadow: var(--shadow); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary-color); letter-spacing: 1px; }
-        .container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; padding-bottom: 40px; }
+        header { background-color: var(--white); padding: 1rem 1.5rem; box-shadow: var(--shadow); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 1.4rem; font-weight: 800; color: var(--primary-color); letter-spacing: 1px; }
+        
+        /* تظبيط مساحات الكونتينر عشان مفيش حاجة تلزق تحت */
+        .container { max-width: 600px; margin: 2rem auto; padding: 0 1.5rem; padding-bottom: 90px; }
+        
         .card { background: var(--white); border-radius: var(--border-radius); padding: 2rem; box-shadow: var(--shadow); margin-bottom: 1.5rem; }
         h2 { color: var(--primary-color); margin-bottom: 1.5rem; text-align: center; font-weight: 800; }
         .form-group { margin-bottom: 1.2rem; }
@@ -50,12 +53,22 @@
         .btn-danger { background-color: #e53e3e; margin-top: 1rem; }
         .btn-danger:hover { background-color: #c53030; }
         
-        /* مربع الشركات الـ 4 */
-        .companies-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1rem; }
+        /* تظبيط مربع الشركات الـ 4 عشان يبقى في النص وشكله متساوي */
+        .companies-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 15px; 
+            margin: 1.5rem auto 0; 
+            max-width: 450px; /* بيخلي المربعات ملمومة وماتلزقش في أطراف الشاشة */
+        }
         .company-box { 
-            background: var(--white); border: 2px solid #e2e8f0; border-radius: var(--border-radius); 
-            padding: 2.5rem 1.5rem; text-align: center; cursor: pointer; transition: all 0.3s ease; 
-            font-weight: 800; font-size: 1.4rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+            background: var(--white); 
+            border: 2px solid #e2e8f0; 
+            border-radius: var(--border-radius); 
+            text-align: center; cursor: pointer; transition: all 0.3s ease; 
+            font-weight: 800; font-size: 1.3rem; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+            aspect-ratio: 1 / 1; /* بيخلي الكروت مربعة بالظبط زي أيقونات التطبيقات */
         }
         .company-box:hover { transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
         .comp-we { border-color: #d6bcfa; color: var(--we-color); }
@@ -67,7 +80,7 @@
         .comp-orange { border-color: #fbd38d; color: var(--orange-color); }
         .comp-orange:hover { background: #fffaf0; }
 
-        .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
         .package-card { background: var(--white); border: 2px solid #e2e8f0; border-radius: var(--border-radius); padding: 1.5rem; text-align: center; cursor: pointer; transition: all 0.3s ease; }
         .package-card:hover { border-color: var(--primary-color); transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
         .package-price { font-size: 1.8rem; font-weight: 800; color: var(--primary-color); margin-bottom: 1rem; }
@@ -89,7 +102,14 @@
         .alert-success { background-color: #c6f6d5; color: #2f855a; }
         .alert-warning { background-color: #feebc8; color: #c05621; border: 1px solid #fbd38d; }
         .admin-number { font-size: 1.8rem; font-weight: 800; color: #e53e3e; text-align: center; letter-spacing: 2px; margin: 1rem 0; padding: 1rem; background: #fff5f5; border-radius: 8px; }
-        .floating-support { position: fixed; bottom: 20px; left: 20px; background-color: #25D366; color: white; border-radius: 50px; padding: 12px 24px; text-decoration: none; font-weight: 800; font-size: 1.1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 1000; display: flex; align-items: center; gap: 8px; transition: transform 0.2s; }
+        
+        /* تظبيط زرار الدعم الفني العائم */
+        .floating-support { 
+            position: fixed; bottom: 20px; left: 20px; 
+            background-color: #25D366; color: white; border-radius: 50px; 
+            padding: 12px 24px; text-decoration: none; font-weight: 800; font-size: 1.1rem; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 1000; display: flex; align-items: center; gap: 8px; transition: transform 0.2s; 
+        }
         .floating-support:hover { transform: scale(1.05); }
 
         .admin-block { border: 2px dashed #cbd5e0; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; }
@@ -100,13 +120,20 @@
         .history-list { list-style: none; padding: 0; margin: 0; font-size: 0.8rem; color: #4a5568; }
         .history-list li { border-bottom: 1px solid #edf2f7; padding: 4px 0; }
         
-        /* تنسيق إمضاء المطور في الأسفل */
+        /* تظبيط إمضاء المطور في الأسفل عشان يبان واضح */
         footer {
-            text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0; 
-            color: var(--text-light); font-size: 0.85rem; font-weight: 600; direction: ltr; letter-spacing: 0.5px;
+            text-align: center; 
+            margin-top: 2rem; 
+            padding-top: 1.5rem; 
+            border-top: 1px solid #e2e8f0; 
+            color: var(--text-light); 
+            font-size: 0.85rem; 
+            font-weight: 600; 
+            direction: ltr; 
+            letter-spacing: 0.5px;
+            padding-bottom: 60px; /* مسافة من تحت عشان زرار الواتساب ميغطيش عليه */
         }
 
-        /* استثناء حقول الإدخال من منع التحديد */
         input, select, textarea {
             -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text; user-select: text;
         }
@@ -115,14 +142,13 @@
 <body>
 
     <script>
-        // كود حماية السورس كود (منع كليك يمين والاختصارات)
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.onkeydown = function(e) {
-            if(e.keyCode == 123) { return false; } // F12
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; } // Inspector
+            if(e.keyCode == 123) { return false; } 
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; } 
             if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; } 
             if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; } 
-            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; } // View Source
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; } 
         };
     </script>
 
@@ -157,16 +183,15 @@
             <h2>اختر شبكة الشحن</h2>
             <p style="text-align: center; color: var(--text-light); margin-bottom: 1.5rem;">اضغط على الشبكة لعرض الباقات المتاحة</p>
             <div class="companies-grid">
-                <div class="company-box comp-we" onclick="selectCompany('WE')">🟣 WE</div>
-                <div class="company-box comp-voda" onclick="selectCompany('Vodafone')">🔴 فودافون</div>
-                <div class="company-box comp-eti" onclick="selectCompany('Etisalat')">🟢 اتصالات</div>
-                <div class="company-box comp-orange" onclick="selectCompany('Orange')">🟠 أورانج</div>
+                <div class="company-box comp-voda" onclick="selectCompany('Vodafone')">🔴<br>فودافون</div>
+                <div class="company-box comp-we" onclick="selectCompany('WE')">🟣<br>WE</div>
+                <div class="company-box comp-orange" onclick="selectCompany('Orange')">🟠<br>أورانج</div>
+                <div class="company-box comp-eti" onclick="selectCompany('Etisalat')">🟢<br>اتصالات</div>
             </div>
         </div>
 
         <div id="admin-section" class="card hidden">
             <h2 style="color: #e53e3e;">لوحة تحكم الإدارة (M.Connect)</h2>
-            
             <div class="admin-block">
                 <h3 style="color: var(--we-color); margin-bottom: 1rem;">💼 إدارة أكواد التجار</h3>
                 <div class="form-group">
@@ -209,7 +234,6 @@
         </div>
 
         <div id="packages-section" class="hidden">
-            
             <div id="we-info-banner" class="info-banner hidden">
                 <h3>💜 تفاصيل وشروط الحجز (باقات WE 015) 💜</h3>
                 <div class="info-grid">
@@ -300,7 +324,6 @@
 
         const loginBtn = document.getElementById('login-btn');
 
-        // تسجيل الدخول
         document.getElementById('login-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const name = document.getElementById('userName').value.trim();
@@ -322,7 +345,6 @@
                 }
             } else { currentPackages = defaultPackages; }
 
-            // فحص دخول الأدمن
             if (name === 'M.Connect' && phone === '01031690232') {
                 document.getElementById('login-section').classList.add('hidden');
                 document.getElementById('user-greeting').textContent = `أهلاً، مدير النظام`;
@@ -333,7 +355,6 @@
                 return;
             }
 
-            // فحص كود التاجر
             currentUser = { name, phone, isMerchant: false };
             if(mCode) {
                 if(allPromoCodes[mCode] && allPromoCodes[mCode].isActive !== false) {
@@ -347,7 +368,6 @@
                 }
             }
 
-            // حفظ اليوزر العادي
             if(db) {
                 try {
                     const snapshot = await get(child(ref(db), `users/${phone}`));
@@ -365,7 +385,6 @@
             document.getElementById('companies-section').classList.remove('hidden');
         });
 
-        // اختيار شبكة معينة
         window.selectCompany = function(comp) {
             selectedCompany = comp;
             document.getElementById('companies-section').classList.add('hidden');
@@ -391,7 +410,6 @@
             document.getElementById('companies-section').classList.remove('hidden');
         };
 
-        // عرض الباقات للعميل أو التاجر مصفاة بالشركة
         function renderPackagesForUser() {
             const container = document.getElementById('packages-container');
             container.innerHTML = '';
@@ -454,7 +472,6 @@
             document.getElementById('payment-amount').textContent = finalCalculatedPrice;
         });
 
-        // إرسال الطلب لتليجرام + حفظ التاريخ
         document.getElementById('payment-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const file = document.getElementById('receiptImage').files[0];
@@ -512,7 +529,6 @@
             }
         });
 
-        // ------------------ دوال لوحة تحكم الأدمن ------------------
         window.generatePromoCode = async function() {
             const mName = document.getElementById('new-merchant-name').value.trim();
             if(!mName) return alert("اكتب اسم التاجر الأول");
